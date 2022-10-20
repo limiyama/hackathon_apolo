@@ -38,7 +38,7 @@
                 <div class="row linha justify-content-center r-cadastro">
                   <div class="col-sm-10">
                     <div class="m-cadastro">
-                        <form action="https://formspree.io/f/xlevdyoq" method="POST">
+                        <form method="POST">
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <input type="email" class="form-control forms" id="email" name="email" placeholder="E-mail">
@@ -60,10 +60,10 @@
                               <div id="campoDeficiente">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control forms" id="deficiencia" placeholder="Tipo de deficiência">
+                                        <input type="text" class="form-control forms" id="tipoDef" placeholder="Tipo de deficiência">
                                     </div>
                                     <div class=" col-md-6">
-                                        <input type="text" class="form-control forms" id="deficiencia" placeholder="Celular">
+                                        <input type="text" class="form-control forms" id="celDef" placeholder="Celular">
                                     </div>
                                     <br> <br> 
                                     <div class="col-md-6">
@@ -94,12 +94,15 @@
                             </div>
                           </form>
                         <br> 
-                      <button type="submit" value="Entrar" class="btn-login"> Entrar </button>
-                      <button class="btn-cadastro"> <a href="../index.html"> Voltar </a></button>
+                      <div class="center">
+                        <button type="submit" value="Cadastrar" class="btn-login" id="cadastrar" onclick="salvarPessoa()"> Cadastrar </button>
+                        <button class="btn-cadastro"> <a href="../index.html"> Voltar </a></button>
+                    </div>
                     </div>
                   </div>
                 </div>
               </div>
+            
         </main>
         <div class="container-fluid footer">
             <p class="footer-p"> 2022 © Apolo </p>
