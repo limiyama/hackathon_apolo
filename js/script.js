@@ -1,82 +1,95 @@
-var remedios = [{}];
-var usuariosCadastro = [{}];
-var farmaciaCadastro = [{}];
-var remediosFarmacia = [{}];
+particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+  console.log('callback - particles.js config loaded');
+});
 
 function cadastrarD() {
-  var usuario = document.getElementById('cadastroEmail').value;
-  var senha = document.getElementById('cadastroSenha').value;
+  let defCadastrados = localStorage.defLogin ? JSON.parse(localStorage.defLogin) : [];
+  const defData = {
+      email: document.getElementById('cadastroEmail').value,
+      password: document.getElementById('cadastroSenha').value
+  };
+  defCadastrados.push(defData);
+  localStorage.setItem('defLogin', JSON.stringify(defCadastrados));
 
-  var remedio1 = document.getElementById('remedio1').value;
-  var remedio2 = document.getElementById('remedio2').value;
+  let defRemedios = localStorage.defRemedio ? JSON.parse(localStorage.defRemedio) : [];
+  const dRemedioData = {
+      r1: document.getElementById('remedioD1').value,
+      r2: document.getElementById('remedioD2').value
+  };
+  defRemedios.push(dRemedioData);
+  localStorage.setItem('defRemedio', JSON.stringify(defRemedios));
 
-  let usuariosCadastro = JSON.parse(localStorage.getItem('users'));
-  if(usuariosCadastro) {
-      usuariosCadastro.push({name: usuario, password: senha});
-      localStorage.setItem('users', JSON.stringify(usuariosCadastro));
-      console.log('foi', usuariosCadastro)
-      localStorage.setItem('users', JSON.stringify([{name: usuario, password: senha}]));
-  }
-
-  let remedios = JSON.parse(localStorage.getItem('medicamento'));
-  if(remedios) {
-      remedios.push({r1: remedio1, r2: remedio2});
-      localStorage.setItem('medicamento', JSON.stringify(remedios));
-      console.log('foi os remedios', remedios)
-      localStorage.setItem('medicamento', JSON.stringify([{r1: remedio1, r2: remedio2}]));
-  }
-
-  return location.replace("inicioD.html")
+  window.location = '/inicioD.html';
 }
 
 function cadastrarF() {
-  var farmacia = document.getElementById('cadastroEmail').value;
-  var senhaF = document.getElementById('cadastroSenha').value;
-
-  var remedio1 = document.getElementById('remedio1').value;
-  var remedio2 = document.getElementById('remedio2').value;
-
-  let farmaciaCadastro = JSON.parse(localStorage.getItem('farmacias'));
-  if(farmaciaCadastro) {
-      farmaciaCadastro.push({name: farmacia, password: senhaF});
-      localStorage.setItem('farmacias', JSON.stringify(farmaciaCadastro));
-      console.log('foi', farmaciaCadastro)
-      localStorage.setItem('farmacias', JSON.stringify([{name: farmacia, password: senhaF}]));
-  }
-
-  let remediosFarmacia = JSON.parse(localStorage.getItem('medicamentos'));
-  if(remediosFarmacia) {
-    remediosFarmacia.push({rf1: remedio1, rf2: remedio2});
-      localStorage.setItem('medicamentos', JSON.stringify(remediosFarmacia));
-      console.log('foi os remedios', remediosFarmacia)
-      localStorage.setItem('medicamentos', JSON.stringify([{rf1: remedio1, rf2: remedio2}]));
-  }
-
-  return location.replace("inicioF.html")
+  let farCadastrados = localStorage.farLogin ? JSON.parse(localStorage.farLogin) : [];
+  const farData = {
+      email: document.getElementById('cadastroEmail').value,
+      password: document.getElementById('cadastroSenha').value
+  };
+  farCadastrados.push(farData);
+  localStorage.setItem('farLogin', JSON.stringify(farCadastrados));
+  window.location.reload();
 }
 
-function fazerLogin() {
-  var usuario = document.getElementById('emailLogin').value;
-  var senha = document.getElementById('senhaLogin').value;
-
-  let usuariosCadastro = JSON.parse(localStorage.getItem('users'))
-  if(usuariosCadastro) {  
-      for (let i = 0; i < usuariosCadastro.length; i++){
-          if (usuario == usuariosCadastro[i].name && senha == usuariosCadastro[i].password) {
-              alert('login');
-              return location.replace("pages/inicioD.html");
-           }
+function loginDef() {
+  const loginEmail = document.getElementById('emailLogin').value
+  const loginSenha = document.getElementById('senhaLogin').value
+  if (localStorage.getItem('defLogin')) {
+      const todosUserCadastro = JSON.parse(localStorage.getItem('defLogin'));
+      const matchedUser = todosUserCadastro.filter(user => {
+          return loginEmail === user.email && loginSenha === user.password;
+      })
+      if (matchedUser.length) {
+          alert('Login feito com sucesso')
+          return location.replace("pages/inicioD.html");
+      } else {
+          alert('Erro')
       }
   } else {
-      if(farmaciaCadastro) {
-        for (let i=0; i < farmaciaCadastro.length; i++) {
-          if (usuario == farmaciaCadastro[i].name && senha == farmaciaCadastro[i].password) {
-            alert('login');
-            return location.replace("pages/inicioF.html");
-         }
-        }
-      }
+      aler('Erro') // Don't say "Not a registered user"
   }
+}
 
-  return alert('errado');
+function loginFar() {
+  const loginEmail = document.getElementById('emailLogin').value
+  const loginSenha = document.getElementById('senhaLogin').value
+  if (localStorage.getItem('farLogin')) {
+      const todosUserCadastro = JSON.parse(localStorage.getItem('farLogin'));
+      const matchedUser = todosUserCadastro.filter(user => {
+          return loginEmail === user.email && loginSenha === user.password;
+      })
+      if (matchedUser.length) {
+          alert('Login feito com sucesso')
+          return location.replace(" inicioF.html");
+      } else {
+          alert('Erro')
+      }
+  } else {
+      aler('Erro') // Don't say "Not a registered user"
+  }
+}
+
+const displayArray = ()=> {
+  let displayedNumbers='';
+  var sum = 0;
+  for (i = 0; i < myArray.length; i++){
+
+       displayedNumbers += myArray[i] + "\n";
+       //Calculate myArray and give sum total of numbers
+       sum += myArray.reduce(function (accumulator, currentValue) {
+         return accumulator + currentValue;
+       }, 0);
+
+      //Store sum in localStorage and retrieve
+       localStorage.setItem("items2", JSON.stringify(sum));
+       localStorage.getItem("items2");
+       //How do I display this in SUM
+  };  
+  document.getElementById("rightpane1").textContent = displayedNumbers;
+
+  //Add sum of array and display it in HTML
+  document.getElementById("rightpane2").textContent = 'Total ' + sum;  
+
 }

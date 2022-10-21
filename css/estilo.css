@@ -11,7 +11,7 @@ body, html {
 ul {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: none
 }
 
 a {
@@ -147,6 +147,14 @@ p {
     border-style: solid;
 }
 
+#particles-js {
+    width: 100%;
+    position: fixed;
+    z-index: 0;
+    height: 2000px;
+}
+
+
 .btn-login:hover {
     background-color: #fcd45d;
     color: #000;
@@ -163,6 +171,20 @@ p {
     transition: all 0.3s ease-in
 }
 
+.sublinha {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sublinha:hover {
+    color: #ff9500;
+}
+
+u {
+    text-decoration-color:#ff9500;
+}
+
 .cards {
     display: block;
     margin-top: 10px;
@@ -173,12 +195,17 @@ p {
     display: flex;
 }
 
+.card-row {
+    padding: 0 62px;
+}
+
 .card {
     text-align: center;
     color:#000;
     margin: 15px;
     background-color: #fff;
-    box-shadow: 8px 8px 8px rgba(51, 51, 51, 0.1);;
+    box-shadow: 8px 8px 2px rgba(34, 34, 34, 0.1);
+    border-color: #fcd45d;
 }
   
 .card-title {
@@ -195,6 +222,11 @@ p {
 
 .t-valores {
     color: #000;
+}
+
+.s-equipe {
+    position: relative;
+    background-color: #fff;
 }
 
 .forms {
@@ -222,7 +254,7 @@ p {
 }
 
 .linha {
-    padding: 72px;
+    padding: 72px 72px 26px;
 }
 
 .footer {
@@ -242,6 +274,11 @@ p {
 
 /* cadastro */
 .center {
+    text-align: center;
+}
+
+.center2 {
+    float: center;
     text-align: center;
 }
 
@@ -270,7 +307,7 @@ p {
 }
 
 .modal-dialog {
-    max-width: 720px;
+    max-width: 680px;
 }
 
 .btn-pesquisa {
