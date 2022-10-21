@@ -31,7 +31,15 @@ function cadastrarF() {
 
   farCadastrados.push(farData);
   localStorage.setItem('farLogin', JSON.stringify(farCadastrados));
-  window.location.reload();
+  
+  let farRemedios = [];
+  const fRemedioData = {
+      rA: document.getElementById('remedioF1').value,
+      rB: document.getElementById('remedioF2').value
+  };
+  farRemedios.push(fRemedioData);
+  localStorage.setItem('farRemedios', JSON.stringify(farRemedios));
+
 }
 
 function loginDef() {
@@ -79,6 +87,8 @@ function pesquisarFarmacia() {
     if (localStorage.getItem('farLogin')) {
 
     const farmaciaCadastrada = JSON.parse(window.localStorage.getItem('farLogin'));
+    const remediosFCadastrados = JSON.parse(window.localStorage.getItem('farRemedios'));
+
 
     const farmaciaEncontrada = farmaciaCadastrada.filter(user => {
         return nomeFarmacia === user.email;
@@ -86,7 +96,8 @@ function pesquisarFarmacia() {
     if (farmaciaEncontrada.length) {
         $('#modalPFarm').modal('show');
         
-        document.getElementById('nmFarm').innerHTML = nomeFarmacia
+        document.getElementById('nmFarm').innerHTML = nomeFarmacia;
+        document.getElementById('remedioFDisponivel').innerHTML = JSON.stringify(remediosFCadastrados)
     } else {
         alert('Erro')
         console.log(nomeFarmacia, window.localStorage.getItem('farLogin'));
@@ -94,6 +105,55 @@ function pesquisarFarmacia() {
  }
 }
 
+function pesquisarRemedio() {
+    const nomeRemedio = document.getElementById('nomeFRem').value
+
+    if (localStorage.getItem('farRemedios')) {
+
+    const remedioCadastrado = JSON.parse(window.localStorage.getItem('farRemedios'));
+
+    const remedioEncontrado = remedioCadastrado.filter(user => {
+        return nomeRemedio === user.rA || nomeRemedio === user.rB;
+    })
+    if (remedioEncontrado.length) {
+        $('#modalRemeFarm').modal('show');
+        
+        document.getElementById('remedioFPesquisado').innerHTML = nomeRemedio;
+    } else {
+        alert('Erro')
+        console.log(nomeRemedio, window.localStorage.getItem('farRemedios'));
+    }
+ }
+}
+
+function apagarRemedio(){
+
+            const deletedRemedio= document.getElementById('nomeFRem').value
+            let remediosD = JSON.parse(localStorage.getItem("farRemedios"));
+         
+            remediosD = remediosD.filter(prodId => prodId !== deletedRemedio);
+         
+            localStorage.setItem("farRemedios", JSON.stringify(remediosD));
+         alert('deletou')
+}
+
+function addRemedio(){
+        const add_item = document.getElementById('nomeFRem').value
+
+        // parse existing storage key or string representation of empty array
+        var remediosExistentes = JSON.parse(localStorage.getItem("farRemedios") || '[]');
+      
+        // Add item if it's not already in the array, then store array again
+        if (!remediosExistentes.includes(add_item)) {
+          remediosExistentes.push(add_item);
+          localStorage.setItem("farRemedios", JSON.stringify(remediosExistentes));
+        }else{
+           // or tell user it's already there
+           console.log(add_item + ' ja adicionou')
+        }
+      }
+
+// def
 const listaRem = JSON.parse(window.localStorage.getItem('defRemedio'));
 document.getElementById('remedios-def').innerHTML = JSON.stringify(listaRem)
 

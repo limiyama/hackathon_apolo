@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -30,7 +32,7 @@
           <main>
               <div class="container-fluid main" id="home">
                 <div class="row linha r-cadastro">
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <div class="m-cadastro">
                       <h2> Olá! </h2>
                       <p> Verifique a disponibilidade dos seus remédios nas farmácias: </p>
@@ -40,14 +42,15 @@
                           <div class="col-sm-9">
                             <input type="text" class="form-control form-pesquisa" placeholder="Nome da Farmácia" id="nomeFarm">
                           </div>
-                          <div class="col-sm-2">
+                          <div class="col-sm-3">
+                            <br>
                             <a  id="meudeus" onclick="pesquisarFarmacia()"> Pesquisar </a>
                           </div>
                         </div>
                       </form>
                     </div>
                   </div>
-                  <div class="col-sm-6 center">
+                  <div class="col-sm-5 center">
                     <img src="../img/inicioD.png" width="400px">
                   </div>
                 </div>
@@ -76,7 +79,7 @@
                             <div class="col-sm-7">
                             <br>
                           <p>Nome da Farmácia: <p id="nmFarm"> </p></p>
-                            <p>Remédios disponíveis:</p>
+                            <p>Remédios disponíveis: <p id="remedioFDisponivel"> </p> </p>
                             </div>
                         </div>
                     </div>
