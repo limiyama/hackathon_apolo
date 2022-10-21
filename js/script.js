@@ -93,7 +93,10 @@ function pesquisarFarmacia() {
         $('#modalPFarm').modal('show');
         
         document.getElementById('nmFarm').innerHTML = nomeFarmacia;
-        document.getElementById('remedioFDisponivel').innerHTML = JSON.stringify(remediosFCadastrados)
+        //document.getElementById('remedioFDisponivel').innerHTML = JSON.stringify(remediosFCadastrados)
+
+
+        document.getElementById('remedioFDisponivel').innerHTML = remediosFCadastrados.join(', ');
     } else {
         alert('Erro')
         console.log(nomeFarmacia, window.localStorage.getItem('farLogin'));
@@ -150,7 +153,57 @@ function addRemedio(){
         }
       }
 
+function addRemedioDef(){
+        const add_item = document.getElementById('nomeDRem').value
+
+        // parse existing storage key or string representation of empty array
+        var remediosExistentes = JSON.parse(localStorage.getItem("defRemedio") || '[]');
+      
+        // Add item if it's not already in the array, then store array again
+        if (!remediosExistentes.includes(add_item)) {
+          remediosExistentes.push(add_item);
+          localStorage.setItem("defRemedio", JSON.stringify(remediosExistentes));
+        }else{
+           // or tell user it's already there
+           console.log(add_item + ' ja adicionou')
+        }
+      }
+
+function apagarRemedioDef(){
+
+        const deletedRemedio= document.getElementById('nomeDRem').value
+        let remediosD = JSON.parse(localStorage.getItem("defRemedio"));
+     
+        remediosD = remediosD.filter(prodId => prodId !== deletedRemedio);
+     
+        localStorage.setItem("defRemedio", JSON.stringify(remediosD));
+     alert('deletou')
+}
+
+function pesquisarRemedioDef() {
+    const nomeRemedio = document.getElementById('nomeDRem').value
+    const remedioCadastrado = JSON.parse(window.localStorage.getItem('defRemedio'));
+
+    //
+    
+    if (localStorage.getItem('defRemedio')) {
+
+    const achouRemedio = remedioCadastrado.filter(user => 
+            user === nomeRemedio
+        )
+    if (achouRemedio.length) {
+        $('#modalRemeDef').modal('show');
+        
+        document.getElementById('remedioDPesquisado').innerHTML = nomeRemedio;
+    } else {
+        alert('Erro')
+        console.log(nomeRemedio, remedioCadastrado, window.localStorage.getItem('defRemedio'));
+    }
+ }
+}
+
 // def
 const listaRem = JSON.parse(window.localStorage.getItem('defRemedio'));
-document.getElementById('remedios-def').innerHTML = JSON.stringify(listaRem)
-
+console.log(listaRem)
+document.getElementById('remedios-def').innerHTML = listaRem.join(', ');
+    

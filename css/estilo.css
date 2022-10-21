@@ -254,7 +254,7 @@ u {
 }
 
 .linha {
-    padding: 72px 72px 26px;
+    padding: 38px 72px 26px;
 }
 
 .footer {
@@ -343,6 +343,31 @@ u {
     border-style: none;
 }
 
+.linhaRemC {
+    padding: 72px 72px 0;
+}
+
+#remedios-def {
+    font-size: 20px;
+}
+
+.loginFarmacia {
+    padding-bottom: 180px;
+    background-color: #fff185;
+}
+
+.divLFarmacia {
+    margin-top: 180px;
+    background-color: #fff185;
+}
+
+.mainHomePesq {
+    padding: 100px 100px 36px;
+}
+
+.imagemMg {
+    margin-top: 14px;
+}
 @media screen and (max-width: 768px) {
     .header {
         font-size: 10px;

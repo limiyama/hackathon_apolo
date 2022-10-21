@@ -31,7 +31,7 @@
       </nav>
           <main>
               <div class="container-fluid main" id="home">
-                <div class="row linha r-cadastro">
+                <div class="row linha r-cadastro mainHomePesq">
                   <div class="col-sm-7">
                     <div class="m-cadastro">
                       <h2> Olá! </h2>
@@ -51,19 +51,36 @@
                     </div>
                   </div>
                   <div class="col-sm-5 center">
-                    <img src="../img/inicioD.png" width="400px">
+                    <img src="../img/inicioD.png" width="400px" class="imagemMg">
                   </div>
                 </div>
               </div>
               <br> 
               <div class="container-fluid">
-                <div class="row linha">
+                <div class="row linhaRemC">
                   <div class="col-sm-12">
                     <h4>Seus remédios cadastrados:</h4>
                     <div id="remedios-def"></div>
                   </div>
                 </div>
+                <div class="row linha">
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-pesquisa" placeholder="Remédio" id="nomeDRem">
+                    </div>
+                    <div class="col-sm-2">
+                      <br>
+                      <a href="#" id="meudeus" onclick="pesquisarRemedioDef()">Pesquisar</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 center">
+                            <br>
+                            <a href="#" class="btn-login" onclick="apagarRemedioDef()">Deletar</a>
+                            <a href="#" class="btn-login" onclick="addRemedioDef()">Adicionar</a>
+                          </div>
+                        </div>
               </div>
+              <br>
         </main>
         <div id="resultadoPesq">
           <div class="modal-dialog">
@@ -78,8 +95,8 @@
                             </div>
                             <div class="col-sm-7">
                             <br>
-                          <p>Nome da Farmácia: <p id="nmFarm"> </p></p>
-                            <p>Remédios disponíveis: <p id="remedioFDisponivel"> </p> </p>
+                          <p class="pesquisaP">Nome da Farmácia: <p id="nmFarm"> </p></p>
+                            <p class="pesquisaP">Remédios disponíveis: <p id="remedioFDisponivel"> </p> </p>
                             </div>
                         </div>
                     </div>
@@ -87,6 +104,33 @@
                 <div class="modal-footer ">
                     <a href="#" class="btn-cadastro" data-dismiss="modal">Sair</a>
                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="resultadoPesq1">
+      <div class="modal-dialog">
+        <div class="modal" id="modalRemeDef" aria-labelledby="exampleModalLabel" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <img src="../img/farmPesq.png" width="100%">
+                    </div>
+                    <div class="col-sm-7">
+                      <br>
+                      <p class="pesquisaP">Remédio pesquisado: <p id="remedioDPesquisado"> </p> </p>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer ">
+                  <a href="#" class="btn-cadastro" data-dismiss="modal">Sair</a>
+              </div>
             </div>
           </div>
         </div>
