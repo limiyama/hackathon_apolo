@@ -19,7 +19,6 @@ function cadastrarD() {
   defRemedios.push(dRemedioData);
   localStorage.setItem('defRemedio', JSON.stringify(defRemedios));
 
-  window.location = '/inicioD.html';
 }
 
 function cadastrarF() {
@@ -71,25 +70,18 @@ function loginFar() {
   }
 }
 
-const displayArray = ()=> {
-  let displayedNumbers='';
+const mostrarRemedios = ()=> {
+  let displayedRemedios='';
   var sum = 0;
-  for (i = 0; i < myArray.length; i++){
+  for (i = 0; i < defRemedios.length; i++){
 
-       displayedNumbers += myArray[i] + "\n";
-       //Calculate myArray and give sum total of numbers
-       sum += myArray.reduce(function (accumulator, currentValue) {
-         return accumulator + currentValue;
-       }, 0);
+       displayedRemedios += defRemedios[i] + "\n";
 
       //Store sum in localStorage and retrieve
-       localStorage.setItem("items2", JSON.stringify(sum));
-       localStorage.getItem("items2");
+       localStorage.setItem("remedios", JSON.stringify(sum));
+       localStorage.getItem("remedios");
        //How do I display this in SUM
   };  
-  document.getElementById("rightpane1").textContent = displayedNumbers;
-
-  //Add sum of array and display it in HTML
-  document.getElementById("rightpane2").textContent = 'Total ' + sum;  
-
+  document.getElementById("remedios-def").textContent = displayedRemedios;
+  console.log(defRemedios[{r1, r2}])
 }
