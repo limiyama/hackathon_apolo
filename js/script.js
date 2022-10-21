@@ -11,12 +11,10 @@ function cadastrarD() {
   defCadastrados.push(defData);
   localStorage.setItem('defLogin', JSON.stringify(defCadastrados));
 
+  //
+  const r1 = document.getElementById('remedioD1').value
   let defRemedios = [];
-  const dRemedioData = {
-      r1: document.getElementById('remedioD1').value,
-      r2: document.getElementById('remedioD2').value
-  };
-  defRemedios.push(dRemedioData);
+  defRemedios.push(r1);
   localStorage.setItem('defRemedio', JSON.stringify(defRemedios));
 
 }
@@ -25,19 +23,17 @@ function cadastrarF() {
   let farCadastrados = localStorage.farLogin ? JSON.parse(localStorage.farLogin) : [];
 
   const farData = {
-      email: document.getElementById('cadastroEmail').value,
+      nome: document.getElementById('cadastroNome').value,
       password: document.getElementById('cadastroSenha').value
   };
 
   farCadastrados.push(farData);
   localStorage.setItem('farLogin', JSON.stringify(farCadastrados));
-  
+
+  //
+  const rA = document.getElementById('remedioF1').value
   let farRemedios = [];
-  const fRemedioData = {
-      rA: document.getElementById('remedioF1').value,
-      rB: document.getElementById('remedioF2').value
-  };
-  farRemedios.push(fRemedioData);
+  farRemedios.push(rA);
   localStorage.setItem('farRemedios', JSON.stringify(farRemedios));
 
 }
@@ -68,7 +64,7 @@ function loginFar() {
   if (localStorage.getItem('farLogin')) {
       const todosUserCadastro = JSON.parse(localStorage.getItem('farLogin'));
       const matchedUser = todosUserCadastro.filter(user => {
-          return loginEmail === user.email && loginSenha === user.password;
+          return loginEmail === user.nome && loginSenha === user.password;
       })
       if (matchedUser.length) {
           alert('Login feito com sucesso')
@@ -91,7 +87,7 @@ function pesquisarFarmacia() {
 
 
     const farmaciaEncontrada = farmaciaCadastrada.filter(user => {
-        return nomeFarmacia === user.email;
+        return nomeFarmacia === user.nome;
     })
     if (farmaciaEncontrada.length) {
         $('#modalPFarm').modal('show');
@@ -107,21 +103,22 @@ function pesquisarFarmacia() {
 
 function pesquisarRemedio() {
     const nomeRemedio = document.getElementById('nomeFRem').value
-
-    if (localStorage.getItem('farRemedios')) {
-
     const remedioCadastrado = JSON.parse(window.localStorage.getItem('farRemedios'));
 
-    const remedioEncontrado = remedioCadastrado.filter(user => {
-        return nomeRemedio === user.rA || nomeRemedio === user.rB;
-    })
-    if (remedioEncontrado.length) {
+    //
+    
+    if (localStorage.getItem('farRemedios')) {
+
+    const achouRemedio = remedioCadastrado.filter(user => 
+            user === nomeRemedio
+        )
+    if (achouRemedio.length) {
         $('#modalRemeFarm').modal('show');
         
         document.getElementById('remedioFPesquisado').innerHTML = nomeRemedio;
     } else {
         alert('Erro')
-        console.log(nomeRemedio, window.localStorage.getItem('farRemedios'));
+        console.log(nomeRemedio, remedioCadastrado, window.localStorage.getItem('farRemedios'));
     }
  }
 }

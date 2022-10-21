@@ -328,7 +328,7 @@ u {
     background-repeat: no-repeat;
   }
 
-#nmFarm {
+.pesquisaP {
     font-weight: bold;
 }
 
@@ -343,9 +343,6 @@ u {
     border-style: none;
 }
 
-#remedioFPesquisado {
-    font-weight: bold;
-}
 @media screen and (max-width: 768px) {
     .header {
         font-size: 10px;
