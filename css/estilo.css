@@ -328,6 +328,20 @@ u {
     background-repeat: no-repeat;
   }
 
+#nmFarm {
+    font-weight: bold;
+}
+
+#meudeus {
+    width: 100px;
+    background-color: #fcd45d;
+    color: #000;
+    margin-top: 18px;
+    padding: 16px;
+    height: 48px;
+    border-radius: 20px;
+    border-style: none;
+}
 @media screen and (max-width: 768px) {
     .header {
         font-size: 10px;

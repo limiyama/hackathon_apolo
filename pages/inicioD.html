@@ -9,9 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
     </head>
     <body>
       <nav class="navbar fixed-top">
@@ -42,7 +41,7 @@
                             <input type="text" class="form-control form-pesquisa" placeholder="Nome da Farmácia" id="nomeFarm">
                           </div>
                           <div class="col-sm-2">
-                            <button type="submit" class="btn-pesquisa" onclick="pesquisarFarmacia()"> Pesquisar </button>
+                            <a  id="meudeus" onclick="pesquisarFarmacia()"> Pesquisar </a>
                           </div>
                         </div>
                       </form>
@@ -62,10 +61,35 @@
                   </div>
                 </div>
               </div>
-            </div>
         </main>
-        
-        <div class="container-fluid footer">
+        <div id="resultadoPesq">
+          <div class="modal-dialog">
+            <div class="modal" id="modalPFarm" aria-labelledby="exampleModalLabel" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <img src="../img/farmPesq.png" width="100%">
+                            </div>
+                            <div class="col-sm-7">
+                            <br>
+                          <p>Nome da Farmácia: <p id="nmFarm"> </p></p>
+                            <p>Remédios disponíveis:</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <a href="#" class="btn-cadastro" data-dismiss="modal">Sair</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="container-fluid footer">
             <p class="footer-p"> 2022 © Apolo </p>
       </div>
 

@@ -1,6 +1,6 @@
-particlesJS.load('particles-js', 'particlesjs-config.json', function() {
-  console.log('callback - particles.js config loaded');
-});
+//particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+//  console.log('callback - particles.js config loaded');
+//});
 
 function cadastrarD() {
   let defCadastrados = localStorage.defLogin ? JSON.parse(localStorage.defLogin) : [];
@@ -11,7 +11,7 @@ function cadastrarD() {
   defCadastrados.push(defData);
   localStorage.setItem('defLogin', JSON.stringify(defCadastrados));
 
-  let defRemedios = localStorage.defRemedio ? JSON.parse(localStorage.defRemedio) : [];
+  let defRemedios = [];
   const dRemedioData = {
       r1: document.getElementById('remedioD1').value,
       r2: document.getElementById('remedioD2').value
@@ -23,10 +23,12 @@ function cadastrarD() {
 
 function cadastrarF() {
   let farCadastrados = localStorage.farLogin ? JSON.parse(localStorage.farLogin) : [];
+
   const farData = {
       email: document.getElementById('cadastroEmail').value,
       password: document.getElementById('cadastroSenha').value
   };
+
   farCadastrados.push(farData);
   localStorage.setItem('farLogin', JSON.stringify(farCadastrados));
   window.location.reload();
@@ -54,6 +56,7 @@ function loginDef() {
 function loginFar() {
   const loginEmail = document.getElementById('emailLogin').value
   const loginSenha = document.getElementById('senhaLogin').value
+
   if (localStorage.getItem('farLogin')) {
       const todosUserCadastro = JSON.parse(localStorage.getItem('farLogin'));
       const matchedUser = todosUserCadastro.filter(user => {
@@ -70,18 +73,27 @@ function loginFar() {
   }
 }
 
-const mostrarRemedios = ()=> {
-  let displayedRemedios='';
-  var sum = 0;
-  for (i = 0; i < defRemedios.length; i++){
+function pesquisarFarmacia() {
+    const nomeFarmacia = document.getElementById('nomeFarm').value
 
-       displayedRemedios += defRemedios[i] + "\n";
+    if (localStorage.getItem('farLogin')) {
 
-      //Store sum in localStorage and retrieve
-       localStorage.setItem("remedios", JSON.stringify(sum));
-       localStorage.getItem("remedios");
-       //How do I display this in SUM
-  };  
-  document.getElementById("remedios-def").textContent = displayedRemedios;
-  console.log(defRemedios[{r1, r2}])
+    const farmaciaCadastrada = JSON.parse(window.localStorage.getItem('farLogin'));
+
+    const farmaciaEncontrada = farmaciaCadastrada.filter(user => {
+        return nomeFarmacia === user.email;
+    })
+    if (farmaciaEncontrada.length) {
+        $('#modalPFarm').modal('show');
+        
+        document.getElementById('nmFarm').innerHTML = nomeFarmacia
+    } else {
+        alert('Erro')
+        console.log(nomeFarmacia, window.localStorage.getItem('farLogin'));
+    }
+ }
 }
+
+const listaRem = JSON.parse(window.localStorage.getItem('defRemedio'));
+document.getElementById('remedios-def').innerHTML = JSON.stringify(listaRem)
+
